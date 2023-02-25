@@ -163,6 +163,8 @@ public class OrderRepository {
             for(int i = 0 ; i < orders.size();i++){
                 if(orderId.compareTo(orders.get(i)) == 0){
                     orders.remove(i);
+                    int v = dbPartner.get(dp).getNumberOfOrders();
+                    dbPartner.get(dp).setNumberOfOrders(v-1);
                     dbPair.put(dp,orders);
                     return;
                 }
