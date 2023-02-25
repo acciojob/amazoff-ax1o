@@ -56,7 +56,12 @@ public class OrderRepository {
     }
 
     public int getOrderCountByPartnerId(String partnerId){
-        return dbPartner.get(partnerId).getNumberOfOrders();
+//        return dbPartner.get(partnerId).getNumberOfOrders();
+          if(dbPartner.containsKey((partnerId))){
+              return dbPartner.get(partnerId).getNumberOfOrders();
+          }
+
+          return 0;
     }
 
     public List<String> getOrdersByPartnerId(String partnerId){
@@ -137,7 +142,10 @@ public class OrderRepository {
 
     public void deleteOrderById(String orderId){
 
-        dbOrder.remove(orderId);
+        if(dbOrder.containsKey(orderId))
+            dbOrder.remove(orderId);
+        else
+            return;
 
         for(String dp : dbPair.keySet()){
 
