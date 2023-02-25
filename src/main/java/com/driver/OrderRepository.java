@@ -64,14 +64,26 @@ public class OrderRepository {
           return 0;
     }
 
-    public List<String> getOrdersByPartnerId(String partnerId){
-        return dbPair.get(partnerId);
+    public List<Order> getOrdersByPartnerId(String partnerId){
+
+        List<Order> list = new LinkedList<>();
+
+        if(dbPair.containsKey(partnerId)){
+
+            for(String order : dbPair.get(partnerId)){
+                list.add(dbOrder.get(order));
+            }
+
+        }
+
+        return list;
+
     }
 
-    public List<String> getAllOrders(){
-        List<String> list = new LinkedList<>();
+    public List<Order> getAllOrders(){
+        List<Order> list = new LinkedList<>();
         for(String order : dbOrder.keySet()){
-            list.add(order);
+            list.add(dbOrder.get(order));
         }
         return list;
     }
