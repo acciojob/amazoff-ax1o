@@ -89,6 +89,10 @@ public class OrderRepository {
     }
 
     public int getOrdersLeftAfterGivenTimeByPartnerId(String time,String partnerId){
+
+        if(dbPair.containsKey(partnerId) == false)
+            return 0;
+
         List<String> orders = dbPair.get(partnerId);
 
         //conert time to int
@@ -105,6 +109,11 @@ public class OrderRepository {
 
     public String getLastDeliveryTimeByPartnerId(String partnerId){
         int max = Integer.MIN_VALUE;
+
+        if(dbPair.containsKey(partnerId) == false){
+            return "";
+        }
+
         for(String orderId : dbPair.get(partnerId)){
 
             max = Math.max(dbOrder.get(orderId).getDeliveryTime(),max);
