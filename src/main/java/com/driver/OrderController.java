@@ -27,18 +27,18 @@ public class OrderController {
         return new ResponseEntity<>("New order added successfully", HttpStatus.CREATED);
     }
 
-//    @PostMapping("/add-partner/{partnerId}")
-//    public ResponseEntity<String> addPartner(@PathVariable("partnerId") String partnerId){
-//        orderService.addPartner(partnerId);
-//        return new ResponseEntity<>("New delivery partner added successfully", HttpStatus.CREATED);
-//    }
+    @PostMapping("/add-partner/{partnerId}")
+    public ResponseEntity<String> addPartner(@PathVariable("partnerId") String partnerId){
+        orderService.addPartner(partnerId);
+        return new ResponseEntity<>("New delivery partner added successfully", HttpStatus.CREATED);
+    }
 //
-//    @PutMapping("/add-order-partner-pair")
-//    public ResponseEntity<String> addOrderPartnerPair(@RequestParam("orderId") String orderId, @RequestParam("partnerId") String partnerId){
-//        orderService.addOrderPartnerPair(orderId,partnerId);
-//        //This is basically assigning that order to that partnerId
-//        return new ResponseEntity<>("New order-partner pair added successfully", HttpStatus.CREATED);
-//    }
+    @PutMapping("/add-order-partner-pair")
+    public ResponseEntity<String> addOrderPartnerPair(@RequestParam("orderId") String orderId, @RequestParam("partnerId") String partnerId){
+        orderService.addOrderPartnerPair(orderId,partnerId);
+        //This is basically assigning that order to that partnerId
+        return new ResponseEntity<>("New order-partner pair added successfully", HttpStatus.CREATED);
+    }
 //
     @GetMapping("/get-order-by-id/{orderId}")
     public ResponseEntity<Order> getOrderById(@PathVariable("orderId") String orderId){
@@ -49,15 +49,15 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
 //
-//    @GetMapping("/get-partner-by-id/{partnerId}")
-//    public ResponseEntity<DeliveryPartner> getPartnerById(@PathVariable("partnerId") String partnerId){
-//
-//        DeliveryPartner deliveryPartner = orderService.getPartnerById(partnerId);
-//
-//        //deliveryPartner should contain the value given by partnerId
-//
-//        return new ResponseEntity<>(deliveryPartner, HttpStatus.CREATED);
-//    }
+    @GetMapping("/get-partner-by-id/{partnerId}")
+    public ResponseEntity<DeliveryPartner> getPartnerById(@PathVariable("partnerId") String partnerId){
+
+        DeliveryPartner deliveryPartner = orderService.getPartnerById(partnerId);
+
+        //deliveryPartner should contain the value given by partnerId
+
+        return new ResponseEntity<>(deliveryPartner, HttpStatus.CREATED);
+    }
 //
 //    @GetMapping("/get-order-count-by-partner-id/{partnerId}")
 //    public ResponseEntity<Integer> getOrderCountByPartnerId(@PathVariable("partnerId") String partnerId){
@@ -69,14 +69,14 @@ public class OrderController {
 //        return new ResponseEntity<>(orderCount, HttpStatus.CREATED);
 //    }
 //
-//    @GetMapping("/get-orders-by-partner-id/{partnerId}")
-//    public ResponseEntity<List<String>> getOrdersByPartnerId(@PathVariable("partnerId") String partnerId){
-//        List<String> orders = orderService.getOrdersByPartnerId(partnerId);
-//
-//        //orders should contain a list of orders by PartnerId
-//
-//        return new ResponseEntity<>(orders, HttpStatus.CREATED);
-//    }
+    @GetMapping("/get-orders-by-partner-id/{partnerId}")
+    public ResponseEntity<List<String>> getOrdersByPartnerId(@PathVariable("partnerId") String partnerId){
+        List<String> orders = orderService.getOrdersByPartnerId(partnerId);
+
+        //orders should contain a list of orders by PartnerId
+
+        return new ResponseEntity<>(orders, HttpStatus.CREATED);
+    }
 //
     @GetMapping("/get-all-orders")
     public ResponseEntity<List<String>> getAllOrders(){
